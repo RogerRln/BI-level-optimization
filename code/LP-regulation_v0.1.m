@@ -119,29 +119,6 @@ identity_GeX = [identity_matrix GeX_matrix];
 identity_GeX = [identity_GeX;identity_GeX];
 
 
-if optimization == 1
-	I(find(I == 1))= 1000;
-	I_mil = I;
-else
-	I(find(I == 1))= 1;
-	I_mil = I;
-end
-
-I = eye(1685);
-
-if optimization == 1
-	I(find(I == 1))= -1000;
-	I_menosmil = I;
-else
-	I(find(I == 1))= -1;
-	I_menosmil = I;
-
-end
-
-
-mat_zero = [zero;I_mil;I_menosmil];
-new_matrix =  [IS mat_zero];
-
 %LP.c
 % First, we add an artificial metabolite that consists of putting stoichiometric coefficients of 1 in all the alpha columns.
 new_matrix(end+1,:) = zeros(size(new_matrix(1,:)));
