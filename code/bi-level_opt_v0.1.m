@@ -3,7 +3,7 @@
 %
 % OPTIMIZATION
 %	Minimize Sum of (growth_predicted_i - growth_observed_i)^2
-%	   
+%	   Maximize growth_predicted_i 
 %		s.t.  S_i*v_i = 0
 %		-(1-indicator)*10^6 <= v_i - v_baseline * GeX <= (1-indicator)*10^6
 %
