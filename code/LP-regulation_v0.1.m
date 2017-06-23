@@ -118,7 +118,9 @@ identity_GeX = [identity_matrix GeX_matrix];
 % Getting OUT OF MEMORY ERROR
 identity_GeX = [identity_GeX;identity_GeX];
 
-
+%%% I need to modify some code below here, the backbone is taken from the LP problem that
+%%% that help us to find the rxns that must be relaxed in order to achieve the experimental growth rate
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %LP.c
 % First, we add an artificial metabolite that consists of putting stoichiometric coefficients of 1 in all the alpha columns.
 new_matrix(end+1,:) = zeros(size(new_matrix(1,:)));
