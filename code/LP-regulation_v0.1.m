@@ -165,49 +165,21 @@ b_lower = modelMedium.lb;
 B =[b_stoimatrix; b_lower; b_upper];
 B(end+1) = 0;
 
-%%%%%%%%%%%%%%%%%%%%%%%% Optimization 1 %%%%%%%%%%%%%%%%%%%%%%
+%LP.vtype   % Reactions are treated as continuous Variables and Alphas as Binary Variables
+[nMets,nRxns] = size(model.S);
+vtype_rxns = repmat('C', nRxns, 1);
+vtype_alphas = repmat('B', nRxns, 1);
+vtype =[vtype_rxns; vtype_alphas];
+vtype(end+1) = 'C';
 
-if optimization == 1
-	%LP.vtype   % Reactions are treated as continuous Variables and Alphas as Binary Variables
-	[nMets,nRxns] = size(model.S);
-	vtype_rxns = repmat('C', nRxns, 1);
-	vtype_alphas = repmat('B', nRxns, 1);
-	vtype =[vtype_rxns; vtype_alphas];
-	vtype(end+1) = 'C';
+% Minimize the objective function (Sum of Alphas)
+LP.osense = +1;
+LP.A = new_matrix;
+LP.c = c;
+LP.lb = LB;
+LP.ub = UP;
+LP.csense = csense;
+LP.b = B;
+LP.vtype = vtype;
+solution = solveCobraLP(LP);
 
-	number_rxns=[];
-
-	for i = 1:length(gr)
-    		% We fix the growth rate
-    		LB(427) = gr(i);
-    		UP(427) = gr(i);
-    		% Minimize the objective function (Sum of Alphas)
-    		LP.osense = +1;
-    		LP.A = new_matrix;
-    		LP.c = c;
-    		LP.lb = LB;
-    		LP.ub = UP;
-    		LP.csense = csense;
-    		LP.b = B;
-    		LP.vtype = vtype;
-    		solution = solveCobraLP(LP);
-    		n_rxns = solution.obj;
-    		number_rxns = [number_rxns n_rxns];
-	end
-
-	rxns = [];
-	percentage_change = [];
-	vector_distribution_pFBA = [];
-	vector_distribution_FBA = [];
-
-	LP =[];
-
-
-    	s = 'number_rxns_opt1_SMMcutoff.txt';
-    	fileID = fopen(s,'w');
-    	for row = 1:length(number_rxns)
-        	fprintf(fileID,  '%.2f\n', number_rxns(row));
-    	end
-    	fclose(fileID);
-
-end
