@@ -1,0 +1,9 @@
+This directory contains the necessary data to run the 'generations.py' program and the future bi-level optimization program.
+
+Description of the files:
+
+gb-2009-10-6-r69-s4.xml: SBML format of the Bacillus metabolic model iBsu1103
+gene_expression.csv: Gene Expression Matrix with 11 conditions (columns) and 3853 genes (rows), the matrix is quantile-normalized and the values are in log2 scale.
+gene_expression_column_labels.txt: file containing the column labels and the corresponding growth condition.
+peg_seedsubti.txt: List with the Gene IDs used by the iBsu1103 metabolic model.
+bsu_seedsubti.txt: List with the locus_tag IDs that match the peg IDs, the locus_tag IDs are used by the Gene Expression Matrix.
