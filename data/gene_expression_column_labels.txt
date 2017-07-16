@@ -1,0 +1,14 @@
+
+The Gene expression matrix contains 11 different media conditions labeled as follows:
+
+#'Fru_1' = Fructose
+# 'Glu_1' = Glucose
+# 'Gly_1' = Glycerol
+# 'Glucon_1'= Gluconate
+# 'Mal_1'  = Malate
+# 'Pyr_1' = pyruvate
+# 'M.G_1' = Malate + Glucose
+# 'LBexp_1' = LB
+# 'SMMPr_1' = SMM
+# 'S0_1' = CH       
+# 'G.S_1 = Glutamate + Succinate 
